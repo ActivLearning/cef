@@ -123,7 +123,7 @@ class CefWindowInfo : public CefStructBase<CefWindowInfoTraits> {
   ///
   void SetAsPopup(CefWindowHandle parent, const CefString& windowName) {
     style =
-        WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_VISIBLE;
+        WS_POPUP | WS_VISIBLE;
     parent_window = parent;
     x = CW_USEDEFAULT;
     y = CW_USEDEFAULT;

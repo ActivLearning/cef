@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -28,6 +30,11 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformVersion = await Cef.platformVersion;
+      int cefWinId = await Cef.newCefWindow("www.baidu.com");
+      print("unique winID $cefWinId");
+      await Cef.loadUrl(cefWinId, "www.163.com");
+      await Cef.closeWindowByID(cefWinId);
+      await Cef.dispose();
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
